@@ -1,7 +1,6 @@
-// import { CheckService } from "../domain/use-cases/checks/check-service";
+import { sendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { LogRepositoryImp } from "../infrastructure/repositories/log.repository.impl";
-// import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 
 //Instancias para todos los useCase de ese repositorio
@@ -11,12 +10,22 @@ const fileSystemLogRepository = new LogRepositoryImp(
   //  new MongoLogDatasource(),
 );
 
+const emailService = new EmailService();
+
 export class Server {
   public static start() {
     console.log("Server started...");
 
-    //todo: Mandar email
-    // const emailService = new EmailService(fileSystemLogRepository);
+    // Mandar email a traves del use case
+
+    //* Descomentar para mandar correo
+    // new sendEmailLogs(emailService, fileSystemLogRepository).execute([
+    //   "evaalonso888@gmail.com",
+    //   "evam.alonso95@gmail.com",
+    // ]);
+
+    //* Hasta aquí
+
     // emailService.sendEmailWithFileSystemLogs([
     //   "evaalonso888@gmail.com",
     //   "evam.alonso95@gmail.com",
