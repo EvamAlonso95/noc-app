@@ -1,7 +1,8 @@
-import { CheckService } from "../domain/use-cases/checks/check-service";
+// import { CheckService } from "../domain/use-cases/checks/check-service";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { LogRepositoryImp } from "../infrastructure/repositories/log.repository.impl";
-import { CronService } from "./cron/cron-service";
+// import { CronService } from "./cron/cron-service";
+import { EmailService } from "./email/email.service";
 
 //Instancias para todos los useCase de ese repositorio
 const fileSystemLogRepository = new LogRepositoryImp(
@@ -14,7 +15,12 @@ export class Server {
   public static start() {
     console.log("Server started...");
 
-    //Mandar email
+    //todo: Mandar email
+    // const emailService = new EmailService(fileSystemLogRepository);
+    // emailService.sendEmailWithFileSystemLogs([
+    //   "evaalonso888@gmail.com",
+    //   "evam.alonso95@gmail.com",
+    // ]);
 
     // const url = "https://google.com";
     // CronService.createJob("*/5 * * * * *", () => {
@@ -28,5 +34,3 @@ export class Server {
     // });
   }
 }
-
-// Server.start();
