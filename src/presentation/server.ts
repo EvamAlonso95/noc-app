@@ -14,16 +14,18 @@ export class Server {
   public static start() {
     console.log("Server started...");
 
-    const url = "https://google.com";
-    CronService.createJob("*/5 * * * * *", () => {
-      //Le paso las dependencias definidas en el construcctor
-      new CheckService(
-        fileSystemLogRepository,
-        () => console.log(`${url} is ok`),
-        (error) => console.log(error),
-      ).execute(url);
-      //   new CheckService().execute("http://localhost:3000/");
-    });
+    //Mandar email
+
+    // const url = "https://google.com";
+    // CronService.createJob("*/5 * * * * *", () => {
+    //   //Le paso las dependencias definidas en el construcctor
+    //   new CheckService(
+    //     fileSystemLogRepository,
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.log(error),
+    //   ).execute(url);
+    //   //   new CheckService().execute("http://localhost:3000/");
+    // });
   }
 }
 
