@@ -28,6 +28,7 @@ export class LogEntity {
   //* Estoy recibien un string con toda la info y lo transformo a JSON
   //Crea instancias basadas en el JSON.string
   static fromJSON = (json: string): LogEntity => {
+    json = json === "" ? "{}" : json;
     //Transformamos json.string a json
     const { message, level, createdAt, origin } = JSON.parse(json);
 
