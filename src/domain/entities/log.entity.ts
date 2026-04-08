@@ -41,4 +41,16 @@ export class LogEntity {
 
     return log;
   };
+
+  static fromObject = (objetc: { [key: string]: any }): LogEntity => {
+    const { message, level, origin, createdAt } = objetc;
+    const log = new LogEntity({
+      message,
+      level,
+      createdAt,
+      origin,
+    });
+
+    return log;
+  };
 }
