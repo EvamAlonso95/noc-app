@@ -17,10 +17,10 @@ import { Server } from "./presentation/server";
 async function main() {
   //* MONGO
   // Conexion
-  // await MongoDataBase.connect({
-  //   mongoUrl: envs.MONGO_URL,
-  //   dbName: envs.MONGO_DB_NAME,
-  // });
+  await MongoDataBase.connect({
+    mongoUrl: envs.MONGO_URL,
+    dbName: envs.MONGO_DB_NAME,
+  });
   //* POSTGRES
   //* PRISMA
   // El adapter recibe la URL de conexión a PostgreSQL (ej: postgresql://user:pass@localhost:5432/db)

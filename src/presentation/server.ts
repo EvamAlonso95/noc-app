@@ -1,5 +1,6 @@
 import { LogSeverityLevel } from "../domain/entities/log.entity";
 import { CheckService } from "../domain/use-cases/checks/check-service";
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 import { sendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
@@ -9,11 +10,11 @@ import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 
 //Instancias para todos los useCase de ese repositorio
-const logRepository = new LogRepositoryImp(
-  // new FileSystemDatasource(),
-  new PostgresLogDatasource(),
-  // new MongoLogDatasource(),
-);
+const fsLogRepository = new LogRepositoryImp(new FileSystemDatasource());
+
+const mongoLogRepository = new LogRepositoryImp(new MongoLogDatasource());
+
+const postgresLogRepository = new LogRepositoryImp(new PostgresLogDatasource());
 
 const emailService = new EmailService();
 
@@ -42,8 +43,8 @@ export class Server {
     const url = "https://google.com";
     CronService.createJob("*/5 * * * * *", () => {
       //Le paso las dependencias definidas en el construcctor
-      new CheckService(
-        logRepository,
+      new CheckServiceMultiple(
+        [fsLogRepository, mongoLogRepository, postgresLogRepository],
         () => console.log(`${url} is ok`),
         (error) => console.log(error),
       ).execute(url);
