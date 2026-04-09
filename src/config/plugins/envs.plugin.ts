@@ -1,5 +1,5 @@
 import "dotenv/config";
-import * as env from "env-var";
+import env from "env-var";
 
 export const envs = {
   PORT: env.get("PORT").required().asPortNumber(),
@@ -16,8 +16,5 @@ export const envs = {
   MONGO_PASS: env.get("MONGO_PASS").asString(),
 
   //PostgresDB
-  // POSTGRES_URL=
-  // POSTGRES_DB_NAME=
-  // POSTGRES_USER=
-  // POSTGRES_PASS=
+  POSTGRES_URL: env.get("POSTGRES_URL").required().asString(),
 };
