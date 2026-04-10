@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import { envs } from "../../config/plugins/envs.plugin";
 import { LogRepository } from "../../domain/repository/log.repository";
 
-interface SendMailOptions {
+export interface SendMailOptions {
   to: string | string[];
   subject: string;
   htmlBody: string;

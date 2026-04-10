@@ -21,7 +21,7 @@ export class LogEntity {
     const { message, level, createdAt = new Date(), origin } = options;
     this.message = message;
     this.level = level;
-    this.createdAt = new Date();
+    this.createdAt = createdAt;
     this.origin = origin;
   }
   //Factory constructor

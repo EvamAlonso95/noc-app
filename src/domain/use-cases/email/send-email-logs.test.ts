@@ -16,6 +16,10 @@ describe("send-email-logs", () => {
     mockLogRepository,
   );
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("should call sendEmail and saveLog", async () => {
     const result = await sendEmail.execute("evaalonso888@gmail.com");
 
