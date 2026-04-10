@@ -20,7 +20,7 @@ export class sendEmailLogs implements SendLogEmailUseCase {
       }
 
       const log = new LogEntity({
-        message: "Email log send",
+        message: "Log email sent",
         level: LogSeverityLevel.low,
         origin: "send-email-logs.ts",
       });
